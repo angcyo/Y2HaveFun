@@ -16,6 +16,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         initView();
         initAfter();
+        initEvent();
     }
 
     //初始化
@@ -28,6 +29,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Init before _.
      */
     protected void initBefore() {
+
+    }
+
+    protected void initEvent() {
 
     }
 

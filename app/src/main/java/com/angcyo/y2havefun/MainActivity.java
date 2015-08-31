@@ -1,37 +1,45 @@
 package com.angcyo.y2havefun;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
+import android.widget.RelativeLayout;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class MainActivity extends BaseActivity {
+
+    @Bind(R.id.tabs)
+    TabLayout mTabs;
+    @Bind(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @Bind(R.id.refresher)
+    SwipeRefreshLayout mRefresher;
+    @Bind(R.id.contain)
+    RelativeLayout mContain;
+    @Bind(R.id.nav_view)
+    NavigationView mNavView;
+    @Bind(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView() {
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+//        mRefresher.setEnabled(false);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    protected void initAfter() {
+
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    protected void initBefore() {
+        super.initBefore();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

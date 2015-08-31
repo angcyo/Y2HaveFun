@@ -2,10 +2,12 @@ package com.angcyo.y2havefun;
 
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.widget.RelativeLayout;
+
+import com.angcyo.y2havefun.view.adapter.ViewPagerAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -14,8 +16,11 @@ public class MainActivity extends BaseActivity {
 
     @Bind(R.id.tabs)
     TabLayout mTabs;
-    @Bind(R.id.recyclerView)
-    RecyclerView mRecyclerView;
+//    @Bind(R.id.recyclerView)
+//    RecyclerView mRecyclerView;
+
+    @Bind(R.id.viewpager)
+    ViewPager mViewPager;
     @Bind(R.id.refresher)
     SwipeRefreshLayout mRefresher;
     @Bind(R.id.contain)
@@ -30,6 +35,15 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 //        mRefresher.setEnabled(false);
+        mRefresher.setRefreshing(true);
+
+        initTabs();
+    }
+
+    private void initTabs() {
+//        mTabs.addTab();
+        mViewPager.setAdapter(new ViewPagerAdapter(this.getSupportFragmentManager()));
+        mTabs.setupWithViewPager(mViewPager);
     }
 
     @Override

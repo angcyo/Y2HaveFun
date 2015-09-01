@@ -15,4 +15,9 @@
         <!--<item name="android:textColor">#FF009687</item>-->
         <item name="textAllCaps">false</item>
     </style>
+
+    <style name="PopupTipWindowAnim">
+        <item name="android:windowEnterAnimation">@anim/tran_rtol</item>
+        <item name="android:windowExitAnimation">@anim/alpha_0to1</item>
+    </style>
 </resources>

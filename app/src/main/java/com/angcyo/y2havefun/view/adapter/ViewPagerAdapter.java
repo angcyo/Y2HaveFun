@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.angcyo.y2havefun.view.BaseFragment;
+import com.angcyo.y2havefun.view.CommonFragment;
 
 /**
  * Created by angcyo on 15-08-31-031.
@@ -18,7 +18,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return BaseFragment.newInstance();
+        return new CommonFragment();
     }
 
     @Override

@@ -4,9 +4,9 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.RelativeLayout;
 
+import com.angcyo.y2havefun.util.PopupTipWindow;
 import com.angcyo.y2havefun.view.adapter.ViewPagerAdapter;
 
 import butterknife.Bind;
@@ -14,15 +14,11 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 
+    static int index = 0;
     @Bind(R.id.tabs)
     TabLayout mTabs;
-//    @Bind(R.id.recyclerView)
-//    RecyclerView mRecyclerView;
-
     @Bind(R.id.viewpager)
     ViewPager mViewPager;
-    @Bind(R.id.refresher)
-    SwipeRefreshLayout mRefresher;
     @Bind(R.id.contain)
     RelativeLayout mContain;
     @Bind(R.id.nav_view)
@@ -34,16 +30,29 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-//        mRefresher.setEnabled(false);
-        mRefresher.setRefreshing(true);
-
         initTabs();
     }
 
     private void initTabs() {
-//        mTabs.addTab();
         mViewPager.setAdapter(new ViewPagerAdapter(this.getSupportFragmentManager()));
         mTabs.setupWithViewPager(mViewPager);
+
+        mTabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                PopupTipWindow.showTip(MainActivity.this, (index++) % 4, "hello tip " + index);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
@@ -54,6 +63,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initBefore() {
         super.initBefore();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

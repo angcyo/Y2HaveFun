@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public class Logger {
-    public static final String TAG = "Y2AndroidApi";
+    public static final String TAG = "Y2HaveFun";
     private static boolean isDebugOn = true;
     private static boolean isInfoOn = true;
     private static boolean isWarnOn = true;

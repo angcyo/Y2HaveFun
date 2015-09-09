@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorAccent"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/logo_l_1"
+        style="@style/WelcomeLogoStyle"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/logo_3jy_l" />
+
+    <ImageView
+        android:id="@+id/logo_l_2"
+        style="@style/WelcomeLogoStyle"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/logo_6js_l" />
+
+    <ImageView
+        android:id="@+id/logo_l_3"
+        style="@style/WelcomeLogoStyle"
+        android:layout_marginTop="350dp"
+        android:src="@drawable/logo_weg_l" />
+
+    <ImageView
+        android:id="@+id/logo_r_1"
+        style="@style/WelcomeLogoStyle"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo_jyq_r" />
+
+    <ImageView
+        android:id="@+id/logo_r_2"
+        style="@style/WelcomeLogoStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/logo_lfd_r" />
+
+    <ImageView
+        android:id="@+id/logo_r_3"
+        style="@style/WelcomeLogoStyle"
+        android:layout_marginTop="450dp"
+        android:src="@drawable/logo_pfw_r" />
+
+    <LinearLayout
+        android:id="@+id/load_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/load_bar_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_margin"
+            android:text="@string/loading"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/launch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/launch_bt_margin"
+        android:layout_marginLeft="@dimen/load_bar_margin"
+        android:layout_marginRight="@dimen/load_bar_margin"
+        android:background="@drawable/tran_bg_selector"
+        android:gravity="center"
+        android:text="@string/text_launch"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
+</FrameLayout>

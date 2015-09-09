@@ -51,7 +51,8 @@ public class PopupTipWindow {
         //初始化窗口参数
         if (wmParams == null) {
             wmParams = new WindowManager.LayoutParams();
-            wmParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL;
+//            wmParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL;
+            wmParams.type = WindowManager.LayoutParams.TYPE_TOAST;
             wmParams.format = 1;
             wmParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
@@ -59,7 +60,7 @@ public class PopupTipWindow {
             wmParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
             wmParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
             wmParams.x = 0;
-            wmParams.y = 300;
+            wmParams.y = Constant.POPTIP_OFFSET_Y;
             wmParams.windowAnimations = R.style.PopupTipWindowAnim;
         }
 

@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">Y2HaveFun</string>
+    <string name="app_name">玩得开心</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="text_temp">小二正在积极的进货中...</string>
+    <string name="loading">装载中...</string>
+    <string name="want_load_more">松手,就能拥有更多...</string>
+    <string name="text_launch">我快等不及了</string>
+    <string name="image_temp_tip">图已被盗...^_^</string>
 </resources>

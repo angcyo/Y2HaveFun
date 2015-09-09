@@ -21,4 +21,8 @@ public class HttpDoc {
             throws IOException {
         return Jsoup.parse(file, charsetName);
     }
+
+//    public static Document getDocFromString() {
+//        Jsoup.parse()
+//    }
 }

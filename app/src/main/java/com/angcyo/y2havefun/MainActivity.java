@@ -2,15 +2,19 @@ package com.angcyo.y2havefun;
 
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
-import com.angcyo.y2havefun.util.PopupTipWindow;
-import com.angcyo.y2havefun.view.adapter.ViewPagerAdapter;
+import com.angcyo.y2havefun.components.RDataService;
+import com.angcyo.y2havefun.util.PrettyToast;
+import com.angcyo.y2havefun.view.adapter.MainViewPagerAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public class MainActivity extends BaseActivity {
 
@@ -27,20 +31,38 @@ public class MainActivity extends BaseActivity {
     DrawerLayout mDrawerLayout;
 
     @Override
+    protected void init() {
+        super.init();
+    }
+
+    @Override
     protected void initView() {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+//        EventBus.getDefault().register(this);
         initTabs();
+
+        mNavView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.action_settings) {
+                    PrettyToast.show(MainActivity.this, "谢谢支持...^_^");
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                }
+                return false;
+            }
+        });
     }
 
     private void initTabs() {
-        mViewPager.setAdapter(new ViewPagerAdapter(this.getSupportFragmentManager()));
+        mViewPager.setAdapter(new MainViewPagerAdapter(this.getSupportFragmentManager()));
         mTabs.setupWithViewPager(mViewPager);
 
         mTabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                PopupTipWindow.showTip(MainActivity.this, (index++) % 4, "hello tip " + index);
+//                PopupTipWindow.showTip(MainActivity.this, (index++) % 4, "hello tip " + index);
+                mViewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
@@ -57,7 +79,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initAfter() {
-
+        mViewPager.setCurrentItem(RDataService.DATA_TYPE_1);
     }
 
     @Override
@@ -69,4 +91,28 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+        EventBus.getDefault().unregister(this);
+    }
+
+    private MainViewPagerAdapter getViewPagerAdapter() {
+        if (mViewPager != null) {
+            return (MainViewPagerAdapter) mViewPager.getAdapter();
+        }
+        return null;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(mNavView)) {
+            mDrawerLayout.closeDrawer(mNavView);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
+

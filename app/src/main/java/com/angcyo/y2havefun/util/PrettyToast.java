@@ -59,7 +59,7 @@ public class PrettyToast {
             LinearLayout linearLayout = new LinearLayout(context);
             linearLayout.setGravity(Gravity.CENTER);
             linearLayout.setBackgroundResource(R.drawable.toast_bg);
-            linearLayout.setPadding(0, 10, 0, 10);
+            linearLayout.setPadding(0, 10, 0, 20);
             linearLayout.setMinimumWidth(Integer.MAX_VALUE);
 
             TextView textView = new TextView(context);

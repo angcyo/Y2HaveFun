@@ -27,4 +27,14 @@ public class ContentItem {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (((ContentItem) o).getMsgContent().equalsIgnoreCase(this.getMsgContent())
+                && ((ContentItem) o).getImgUrl().equalsIgnoreCase(this.getImgUrl())) {
+
+            return true;
+        }
+        return false;
+    }
 }

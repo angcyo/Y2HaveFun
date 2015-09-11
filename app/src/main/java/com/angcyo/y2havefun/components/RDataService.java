@@ -4,13 +4,10 @@ import android.app.IntentService;
 import android.content.Intent;
 
 import com.angcyo.y2havefun.control.DataControl;
-import com.angcyo.y2havefun.mode.ContentItem;
 import com.angcyo.y2havefun.mode.HandlerTask;
 import com.angcyo.y2havefun.mode.event.BaseEvent;
 import com.angcyo.y2havefun.mode.event.EventUpdate;
-import com.angcyo.y2havefun.util.Logger;
 
-import java.util.List;
 import java.util.Vector;
 
 import de.greenrobot.event.EventBus;
@@ -71,11 +68,10 @@ public class RDataService extends IntentService {
 
         BaseEvent event;
         boolean isAppend;//是否是加载更多的数据,决定获取到的数据,是在list 前面,还是后面
-        List<ContentItem> dataList;//
         while (tasks.size() > 0) {
-            Logger.e("请求任务数:" + tasks.size());
+//            Logger.e("请求任务数:" + tasks.size());
             HandlerTask task = tasks.remove(0);
-            Logger.e("请求网页数据:" + task.url);
+//            Logger.e("请求网页数据:" + task.url);
 
             event = new EventUpdate();
             event.loadType = task.taskLoadType;

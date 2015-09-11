@@ -100,7 +100,7 @@ public class RDataPullMgr {
         List<ContentItem> saveList = new ArrayList<>();
         switch (type) {
             case RDataService.DATA_TYPE_0:
-                list6JS = updateList(context, lists, list6JS, saveList, isAppend);
+                list6JS = updateList(lists, list6JS, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     Realm6JS realmItem = realm.createObject(Realm6JS.class);
                     realmItem.setContent(item.getMsgContent());
@@ -108,7 +108,7 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_1:
-                list3JY = updateList(context, lists, list3JY, saveList, isAppend);
+                list3JY = updateList(lists, list3JY, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     Realm3JY realmItem = realm.createObject(Realm3JY.class);
                     realmItem.setContent(item.getMsgContent());
@@ -116,7 +116,7 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_2:
-                listPFW = updateList(context, lists, listPFW, saveList, isAppend);
+                listPFW = updateList(lists, listPFW, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     RealmPFW realmItem = realm.createObject(RealmPFW.class);
                     realmItem.setContent(item.getMsgContent());
@@ -124,7 +124,7 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_3:
-                listJYQ = updateList(context, lists, listJYQ, saveList, isAppend);
+                listJYQ = updateList(lists, listJYQ, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     RealmJYQ realmItem = realm.createObject(RealmJYQ.class);
                     realmItem.setContent(item.getMsgContent());
@@ -132,7 +132,7 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_4:
-                listLFD = updateList(context, lists, listLFD, saveList, isAppend);
+                listLFD = updateList(lists, listLFD, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     RealmLFD realmItem = realm.createObject(RealmLFD.class);
                     realmItem.setContent(item.getMsgContent());
@@ -140,7 +140,7 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_5:
-                listWEG = updateList(context, lists, listWEG, saveList, isAppend);
+                listWEG = updateList(lists, listWEG, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     RealmWEG realmItem = realm.createObject(RealmWEG.class);
                     realmItem.setContent(item.getMsgContent());
@@ -155,22 +155,24 @@ public class RDataPullMgr {
         return saveList;
     }
 
-    public static List<ContentItem> updateList(Context context, List<ContentItem> updateList,
+    public static List<ContentItem> updateList(List<ContentItem> updateList,
                                                List<ContentItem> targetList, List<ContentItem> needList, boolean isAppend) {//将新的数据, 放在旧的数据之前,并保存在 数据库中
         List<ContentItem> tempList = new ArrayList<>();
         if (isAppend) {
             tempList.addAll(targetList);
-        }
-        for (ContentItem item : updateList) {
-            if (!targetList.contains(item)) {
-                needList.add(item);
-                tempList.add(item);
+            for (ContentItem item : updateList) {
+                if (!targetList.contains(item)) {
+                    needList.add(item);
+                    tempList.add(item);
+                }
             }
-        }
-        if (!isAppend) {
-            tempList.addAll(targetList);
+        } else {
+            tempList.addAll(updateList);
         }
 
+//        if (!isAppend) {
+//            tempList.addAll(targetList);
+//        }
         return tempList;
     }
 

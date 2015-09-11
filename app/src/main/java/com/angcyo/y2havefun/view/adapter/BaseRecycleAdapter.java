@@ -118,7 +118,11 @@ public class BaseRecycleAdapter extends RecyclerView.Adapter<BaseRecycleAdapter.
     public void setDatas(List<ContentItem> datas, int loadType, int itemCount) {
 //        notifyDataSetChanged();
         this.datas = datas;
-        notifyItemRangeInserted((loadType == RDataService.DATA_UPDATE) ? 0 : (datas.size() - itemCount), itemCount);
+        if (loadType == RDataService.DATA_UPDATE) {
+            notifyDataSetChanged();
+        } else {
+            notifyItemRangeInserted(datas.size() - itemCount, itemCount);
+        }
     }
 
     static class BaseRecycleViewHolder extends RecyclerView.ViewHolder {

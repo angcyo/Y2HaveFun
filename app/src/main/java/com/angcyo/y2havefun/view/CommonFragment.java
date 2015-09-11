@@ -20,6 +20,7 @@ import com.angcyo.y2havefun.mode.HandlerTask;
 import com.angcyo.y2havefun.mode.event.EventUpdate;
 import com.angcyo.y2havefun.mode.event.MainAdapterEvent;
 import com.angcyo.y2havefun.util.PopupTipWindow;
+import com.angcyo.y2havefun.util.Util;
 import com.angcyo.y2havefun.view.adapter.BaseRecycleAdapter;
 import com.bumptech.glide.Glide;
 
@@ -134,15 +135,31 @@ public class CommonFragment extends BaseFragment {
     protected void onDelayShow() {//Fragment 可见的时候, 延迟调用,解决在Viewpager里面 ,第一个 fragment 无法显示 刷新布局的bug
         super.onDelayShow();
 
-        HandlerTask task = createTask(RDataService.DATA_UPDATE);
-        if (!RDataService.isExistTask(task) && !RDataService.isLoadedTask(task)) {
-            refreshData(task);
-            refresh.setRefreshing(true);
-            isRefreshing = true;
+        if (checkNet()) {
+            HandlerTask task = createTask(RDataService.DATA_UPDATE);
+            if (!RDataService.isExistTask(task) && !RDataService.isLoadedTask(task)) {
+                refreshData(task);
+                refresh.setRefreshing(true);
+                isRefreshing = true;
+            }
         }
     }
 
+    protected boolean checkNet() {
+        if (Util.isNetOk(getActivity())) {
+            return true;
+        }
+        PopupTipWindow.showTip(getActivity(), PopupTipWindow.ICO_TYPE_FAILED, "客官,蜘蛛没网不能生存呀!");
+        return false;
+    }
+
     protected void onRefresh() {//SwipeRefreshLayout 请求刷新的时候调用
+        if (!checkNet()) {
+            refresh.setRefreshing(false);
+            isRefreshing = true;
+            return;
+        }
+
         if (isRefreshing) {
             PopupTipWindow.showTip(getActivity(), "客官,慢点操作...");
         } else {
@@ -161,12 +178,17 @@ public class CommonFragment extends BaseFragment {
         if (isLastItem) {
             if (scrollState == RecyclerView.SCROLL_STATE_IDLE) {
                 adapter.setLoadTip(getString(R.string.text_temp));
-                HandlerTask task = createTask(RDataService.DATA_LOAD_MORE);
-                if (!RDataService.isLoadedTask(task)) {
-                    refreshData(task);
-                    isLoadingMore = true;
+                if (checkNet()) {
+                    HandlerTask task = createTask(RDataService.DATA_LOAD_MORE);
+                    if (!RDataService.isLoadedTask(task)) {
+                        refreshData(task);
+                        isLoadingMore = true;
+                    } else {
+                        isLoadingMore = false;
+                    }
                 } else {
                     isLoadingMore = false;
+                    adapter.setLoadTip(getString(R.string.want_network));
                 }
             } else {
                 adapter.setLoadTip(getString(R.string.want_load_more));
@@ -192,7 +214,9 @@ public class CommonFragment extends BaseFragment {
             if (refresh != null) {
                 refresh.setRefreshing(false);
             }
-            tempTip.setVisibility(View.GONE);
+            if (DataControl.getData(position).size() > 0) {
+                tempTip.setVisibility(View.GONE);
+            }
         } else {
             isLoadingMore = false;
             String tip;

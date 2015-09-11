@@ -77,7 +77,7 @@ public class PopupTipWindow {
                 break;
             case ICO_TYPE_FAILED:
                 rootLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.cha, 0, 0, 0);
-                rootLayout.setTextColor(Color.RED);
+                rootLayout.setTextColor(rootLayout.getContext().getResources().getColor(android.R.color.holo_red_dark));
                 break;
             case ICO_TYPE_INFO:
                 rootLayout.setCompoundDrawablesWithIntrinsicBounds(R.drawable.info, 0, 0, 0);

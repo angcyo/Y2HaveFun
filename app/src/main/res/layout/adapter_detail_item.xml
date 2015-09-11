@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="center_horizontal"
+        android:textIsSelectable="true"
         android:textStyle="bold" />
 
     <TextView

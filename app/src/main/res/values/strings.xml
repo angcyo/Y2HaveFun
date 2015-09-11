@@ -6,6 +6,7 @@
     <string name="text_temp">小二正在积极的进货中...</string>
     <string name="loading">装载中...</string>
     <string name="want_load_more">松手,就能拥有更多...</string>
+    <string name="want_network">网络连接之后再试吧...</string>
     <string name="text_launch">我快等不及了</string>
     <string name="image_temp_tip">图已被盗...^_^</string>
 </resources>

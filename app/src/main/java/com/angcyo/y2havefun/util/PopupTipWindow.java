@@ -92,6 +92,7 @@ public class PopupTipWindow {
                 rootLayout.setTextColor(Color.WHITE);
                 break;
         }
+        rootLayout.setText(" " + tip);
         wManager.addView(rootLayout, createParams());
         autoHide();
     }
@@ -117,7 +118,7 @@ public class PopupTipWindow {
             default:
                 break;
         }
-        rootLayout.setText(tip);
+        rootLayout.setText(" " + tip);
         wManager.updateViewLayout(rootLayout, createParams());
         autoHide();
     }
@@ -143,7 +144,6 @@ public class PopupTipWindow {
         rootLayout.removeCallbacks(hideRunnable);
         START_SHOW_TIME = System.currentTimeMillis();
         rootLayout.postDelayed(hideRunnable, Constant.POPTIP_TIME);
-        rootLayout.setText(" " + tip);
     }
 
     private void remove() {

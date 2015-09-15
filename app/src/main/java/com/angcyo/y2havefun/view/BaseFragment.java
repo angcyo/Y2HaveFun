@@ -67,7 +67,6 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroyView();
         ButterKnife.unbind(this);
         Logger.e("onDestroyView " + hashCode());
-
     }
 
     protected void refreshData(HandlerTask task) {

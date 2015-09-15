@@ -81,7 +81,7 @@ public class CommonFragment extends BaseFragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                if (manager.findLastVisibleItemPosition() >= manager.getItemCount() - 1) {
+                if (manager.findLastCompletelyVisibleItemPosition() >= manager.getItemCount() - 1) {
                     isLastItem = true;
                 } else {
                     isLastItem = false;

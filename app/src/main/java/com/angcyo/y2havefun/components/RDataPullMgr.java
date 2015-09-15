@@ -101,6 +101,10 @@ public class RDataPullMgr {
         switch (type) {
             case RDataService.DATA_TYPE_0:
                 list6JS = updateList(lists, list6JS, saveList, isAppend);
+                if (saveList.size() > 0 && !isAppend) {
+                    RealmResults<Realm6JS> results = realm.allObjects(Realm6JS.class);
+                    results.removeAll(results);
+                }
                 for (ContentItem item : saveList) {
                     Realm6JS realmItem = realm.createObject(Realm6JS.class);
                     realmItem.setContent(item.getMsgContent());
@@ -108,6 +112,11 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_1:
+                if (saveList.size() > 0 && !isAppend) {
+                    RealmResults<Realm3JY> results = realm.allObjects(Realm3JY.class);
+                    results.removeAll(results);
+                }
+
                 list3JY = updateList(lists, list3JY, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     Realm3JY realmItem = realm.createObject(Realm3JY.class);
@@ -116,6 +125,10 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_2:
+                if (saveList.size() > 0 && !isAppend) {
+                    RealmResults<RealmPFW> results = realm.allObjects(RealmPFW.class);
+                    results.removeAll(results);
+                }
                 listPFW = updateList(lists, listPFW, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     RealmPFW realmItem = realm.createObject(RealmPFW.class);
@@ -124,6 +137,10 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_3:
+                if (saveList.size() > 0 && !isAppend) {
+                    RealmResults<RealmJYQ> results = realm.allObjects(RealmJYQ.class);
+                    results.removeAll(results);
+                }
                 listJYQ = updateList(lists, listJYQ, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     RealmJYQ realmItem = realm.createObject(RealmJYQ.class);
@@ -132,6 +149,10 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_4:
+                if (saveList.size() > 0 && !isAppend) {
+                    RealmResults<RealmLFD> results = realm.allObjects(RealmLFD.class);
+                    results.removeAll(results);
+                }
                 listLFD = updateList(lists, listLFD, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     RealmLFD realmItem = realm.createObject(RealmLFD.class);
@@ -140,6 +161,10 @@ public class RDataPullMgr {
                 }
                 break;
             case RDataService.DATA_TYPE_5:
+                if (saveList.size() > 0 && !isAppend) {
+                    RealmResults<RealmWEG> results = realm.allObjects(RealmWEG.class);
+                    results.removeAll(results);
+                }
                 listWEG = updateList(lists, listWEG, saveList, isAppend);
                 for (ContentItem item : saveList) {
                     RealmWEG realmItem = realm.createObject(RealmWEG.class);

@@ -41,6 +41,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 //        EventBus.getDefault().register(this);
         initTabs();
+        initWindow(android.support.design.R.color.accent_material_light);
 
         mNavView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -14,7 +14,7 @@ import java.util.List;
  * Created by angcyo on 15-08-27-027.
  */
 public class HttpParse6JS {
-    public static String URL_6JS = "http://m.6jianshi.com/";//手机版和电脑版,得到的页面元素不一样
+    public static String URL_6JS = "http://m.6jianshi.com/new.php";  // "http://m.6jianshi.com/";//手机版和电脑版,得到的页面元素不一样
     public static int currentPage = 1;//当前获取到的页面
 
     /**
@@ -57,8 +57,8 @@ public class HttpParse6JS {
      * @return the next page
      */
     public static String getNextPage() {
-//        http://m.6jianshi.com/index.php?hot=0&pic=0&page_id=2
-        return "http://m.6jianshi.com/index.php?hot=0&pic=0&page_id=" + (currentPage + 1);
+//        http://m.6jianshi.com/index.php?hot=0&pic=0&page_id=2  http://m.6jianshi.com/new.php?pic=0&page_id=1
+        return "http://m.6jianshi.com/new.php?pic=0&page_id=" + (currentPage + 1);
     }
 
 

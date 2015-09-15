@@ -14,7 +14,7 @@ import java.util.List;
  * Created by angcyo on 15-08-27-027.
  */
 public class HttpParseWEG {
-    public static String URL_WEG = "http://www.woegao.com/e/action/ListInfo/?classid=3";
+    public static String URL_WEG = "http://www.woegao.com/zuihaoxiao_30"; //"http://www.woegao.com/e/action/ListInfo/?classid=3";
     public static int currentPage = 1;//当前获取到的页面
     private static String URL_BASE = "http://www.woegao.com";
 
@@ -56,9 +56,10 @@ public class HttpParseWEG {
      * @return the next page
      */
     public static String getNextPage() {
-//        http://www.woegao.com/e/action/ListInfo/index.php?page=2&classid=3&totalnum=915
+        //ttp://www.woegao.com/e/action/ListInfo/index.php?page=2&classid=3&totalnum=915
         //http://www.woegao.com/e/action/ListInfo/index.php?page=9&classid=3&totalnum=915
-        return "http://www.woegao.com/e/action/ListInfo/index.php?page=" + (currentPage + 1) + "&classid=3&totalnum=915";
+        //http://www.woegao.com/zuihaoxiao_30/index_2.html
+        return "http://www.woegao.com/zuihaoxiao_30/index_" + (currentPage + 1) + ".html";
     }
 
 

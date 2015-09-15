@@ -30,6 +30,7 @@ public class DetailsActivity extends BaseActivity {
     protected void initView() {
         setContentView(R.layout.activiti_details);
         ButterKnife.bind(this);
+        initWindow(android.support.design.R.color.accent_material_light);
     }
 
     @Override

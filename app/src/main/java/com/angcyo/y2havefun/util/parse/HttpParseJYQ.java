@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class HttpParseJYQ {
     //    public static String URL_JYQ = "http://m.juyouqu.com/page/2";
-    public static String URL_JYQ = "http://m.juyouqu.com/";
+    public static String URL_JYQ = "http://www.juyouqu.com/tease";  //"http://m.juyouqu.com/";
     public static int currentPage = 1;//当前获取到的页面
 
     public static Document getDoc(String url) throws IOException {
@@ -67,8 +67,8 @@ public class HttpParseJYQ {
      * @return the next page
      */
     public static String getNextPage() {
-//        http://m.juyouqu.com/page/1
-        return "http://m.juyouqu.com/page/" + (currentPage + 1);
+//        http://m.juyouqu.com/page/1  http://www.juyouqu.com/tease/page/2
+        return "http://www.juyouqu.com/tease/page/" + (currentPage + 1);
     }
 
     /**

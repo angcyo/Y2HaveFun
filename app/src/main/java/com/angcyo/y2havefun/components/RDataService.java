@@ -55,9 +55,6 @@ public class RDataService extends IntentService {
         return tasks.contains(task);
     }
 
-    public static boolean isLoadedTask(HandlerTask task) {
-        return loadedTasks.contains(task);
-    }
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -75,13 +72,16 @@ public class RDataService extends IntentService {
 
             event = new EventUpdate();
             event.loadType = task.taskLoadType;
+            event.type = task.taskType;
+            event.datas = DataControl.get(task.taskType, task.url);
             if (task.taskLoadType == DATA_UPDATE) {
                 isAppend = false;
+                if (event.datas.size() > 0) {
+                    DataControl.resetPaget(task.taskType);
+                }
             } else {
                 isAppend = true;
             }
-            event.type = task.taskType;
-            event.datas = DataControl.get(task.taskType, task.url);
             event.datas = RDataPullMgr.updateAndSaveData(RDataService.this, task.taskType, event.datas, isAppend);
             loadedTasks.add(task);
             if (event != null) {

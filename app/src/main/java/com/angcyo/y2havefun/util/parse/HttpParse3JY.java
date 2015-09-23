@@ -21,9 +21,9 @@ public class HttpParse3JY {
         ArrayList<ContentItem> items = new ArrayList<>();
         try {
             Elements contents = HttpDoc.getDoc(url).body().select(".listbox");
-            String msg = "", img = "";
             Element itemContent;
             for (Element item : contents) {
+                String msg = "", img = "";
                 try {
                     itemContent = item.select(".main_text").first();
                     try {
@@ -62,4 +62,9 @@ public class HttpParse3JY {
     public static void incrementPage() {
         ++currentPage;
     }
+
+    public static void resetPage() {
+        currentPage = 1;
+    }
+
 }

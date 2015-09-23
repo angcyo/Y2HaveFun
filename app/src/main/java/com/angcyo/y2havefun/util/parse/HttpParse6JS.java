@@ -27,9 +27,9 @@ public class HttpParse6JS {
         ArrayList<ContentItem> items = new ArrayList<>();
         try {
             Elements contents = HttpDoc.getDoc(url).body().select(".content");
-            String msg = "", img = "";
             Element itemContent;
             for (Element item : contents) {
+                String msg = "", img = "";
                 try {
                     itemContent = item.select("> tbody > tr").get(1);
                     try {
@@ -37,8 +37,17 @@ public class HttpParse6JS {
                         msg = itemContent.select("a").first().text();
                     } catch (Exception e) {
                         e.printStackTrace();
-                        img = "";
-                        msg = itemContent.select("span").first().text();
+                        try {
+                            msg = itemContent.select("p").get(1).text();
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                            try {
+                                msg = itemContent.select("span").first().text();
+                            } catch (Exception e2) {
+                                e2.printStackTrace();
+                                msg = itemContent.select(".content_title").first().text();
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -68,4 +77,9 @@ public class HttpParse6JS {
     public static void incrementPage() {
         ++currentPage;
     }
+
+    public static void resetPage() {
+        currentPage = 1;
+    }
+
 }

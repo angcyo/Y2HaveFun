@@ -167,4 +167,29 @@ public class DataControl {
         }
         return datas;
     }
+
+    public static void resetPaget(int position) {
+        switch (position) {
+            case RDataService.DATA_TYPE_0:
+                HttpParse6JS.resetPage();
+                break;
+            case RDataService.DATA_TYPE_1:
+                HttpParse3JY.resetPage();
+                break;
+            case RDataService.DATA_TYPE_2:
+                HttpParsePFW.resetPage();
+                break;
+            case RDataService.DATA_TYPE_3:
+                HttpParseJYQ.resetPage();
+                break;
+            case RDataService.DATA_TYPE_4:
+                HttpParseLFD.resetPage();
+                break;
+            case RDataService.DATA_TYPE_5:
+                HttpParseWEG.resetPage();
+                break;
+            default:
+                break;
+        }
+    }
 }

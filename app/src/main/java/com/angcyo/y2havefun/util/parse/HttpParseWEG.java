@@ -22,9 +22,9 @@ public class HttpParseWEG {
         ArrayList<ContentItem> items = new ArrayList<>();
         try {
             Elements contents = HttpDoc.getDoc(url).body().select(".post");
-            String msg = "", img = "";
             Element itemContent;
             for (Element item : contents) {
+                String msg = "", img = "";
                 try {
                     itemContent = item.select("> .mixed").first();
                     try {
@@ -69,4 +69,9 @@ public class HttpParseWEG {
     public static void incrementPage() {
         ++currentPage;
     }
+
+    public static void resetPage() {
+        currentPage = 1;
+    }
+
 }

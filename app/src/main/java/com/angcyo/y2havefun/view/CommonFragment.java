@@ -122,6 +122,7 @@ public class CommonFragment extends BaseFragment {
         RDataService.removeTask(task);
         if (refresh != null) {
             refresh.setRefreshing(false);
+            refresh.setEnabled(true);
         }
     }
 
@@ -137,10 +138,11 @@ public class CommonFragment extends BaseFragment {
 
         if (checkNet()) {
             HandlerTask task = createTask(RDataService.DATA_UPDATE);
-            if (!RDataService.isExistTask(task) && !RDataService.isLoadedTask(task)) {
+            if (!RDataService.isExistTask(task)) {
                 refreshData(task);
                 refresh.setRefreshing(true);
                 isRefreshing = true;
+                refresh.setEnabled(false);
             }
         }
     }
@@ -156,7 +158,8 @@ public class CommonFragment extends BaseFragment {
     protected void onRefresh() {//SwipeRefreshLayout 请求刷新的时候调用
         if (!checkNet()) {
             refresh.setRefreshing(false);
-            isRefreshing = true;
+            isRefreshing = false;
+            refresh.setEnabled(true);
             return;
         }
 
@@ -167,6 +170,7 @@ public class CommonFragment extends BaseFragment {
             if (!RDataService.isExistTask(task)) {
                 refreshData(task);
                 isRefreshing = true;
+                refresh.setEnabled(false);
             }
         }
     }
@@ -180,12 +184,8 @@ public class CommonFragment extends BaseFragment {
                 adapter.setLoadTip(getString(R.string.text_temp));
                 if (checkNet()) {
                     HandlerTask task = createTask(RDataService.DATA_LOAD_MORE);
-                    if (!RDataService.isLoadedTask(task)) {
-                        refreshData(task);
-                        isLoadingMore = true;
-                    } else {
-                        isLoadingMore = false;
-                    }
+                    refreshData(task);
+                    isLoadingMore = true;
                 } else {
                     isLoadingMore = false;
                     adapter.setLoadTip(getString(R.string.want_network));
@@ -213,6 +213,7 @@ public class CommonFragment extends BaseFragment {
             isRefreshing = false;
             if (refresh != null) {
                 refresh.setRefreshing(false);
+                refresh.setEnabled(true);
             }
             if (DataControl.getData(position).size() > 0) {
                 tempTip.setVisibility(View.GONE);

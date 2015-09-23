@@ -13,6 +13,7 @@ import com.angcyo.y2havefun.mode.realm.RealmWEG;
 import com.angcyo.y2havefun.util.Logger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
@@ -91,6 +92,13 @@ public class RDataPullMgr {
         Logger.e("resultsWEG --> " + resultsWEG.size());
 
         realm.close();
+
+        Collections.reverse(list6JS);
+        Collections.reverse(list3JY);
+        Collections.reverse(listJYQ);
+        Collections.reverse(listLFD);
+        Collections.reverse(listPFW);
+        Collections.reverse(listWEG);
         EventBus.getDefault().post(new LoadedEvent(LoadedEvent.CODE_OK));
     }
 

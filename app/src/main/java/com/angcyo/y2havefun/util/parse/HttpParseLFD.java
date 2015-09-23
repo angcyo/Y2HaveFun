@@ -21,9 +21,9 @@ public class HttpParseLFD {
         ArrayList<ContentItem> items = new ArrayList<>();
         try {
             Elements contents = HttpDoc.getDoc(url).body().select(".post");
-            String msg = "", img = "", title = "";
             Element itemContent;
             for (Element item : contents) {
+                String msg = "", img = "", title = "";
                 try {
                     try {
                         img = item.select("div").first().select("> .pic-content").first().select("img").first().attr("src");
@@ -66,4 +66,9 @@ public class HttpParseLFD {
     public static void incrementPage() {
         ++currentPage;
     }
+
+    public static void resetPage() {
+        currentPage = 1;
+    }
+
 }

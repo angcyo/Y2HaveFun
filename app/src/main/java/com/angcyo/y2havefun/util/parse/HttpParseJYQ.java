@@ -33,9 +33,9 @@ public class HttpParseJYQ {
         ArrayList<ContentItem> items = new ArrayList<>();
         try {
             Elements contents = getDoc(url).body().select(".article-item");
-            String msg = "", img = "";
             Element itemContent;
             for (Element item : contents) {
+                String msg = "", img = "";
                 try {
                     itemContent = item;
                     try {
@@ -77,4 +77,9 @@ public class HttpParseJYQ {
     public static void incrementPage() {
         ++currentPage;
     }
+
+    public static void resetPage() {
+        currentPage = 1;
+    }
+
 }

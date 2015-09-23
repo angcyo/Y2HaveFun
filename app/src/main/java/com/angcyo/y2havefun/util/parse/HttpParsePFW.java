@@ -22,9 +22,9 @@ public class HttpParsePFW {
         ArrayList<ContentItem> items = new ArrayList<>();
         try {
             Elements contents = HttpDoc.getDoc(url).body().select(".tieziBox");
-            String msg = "", img = "", title = "";
             Element itemContent;
             for (Element item : contents) {
+                String msg = "", img = "", title = "";
                 try {
                     itemContent = item.select("> .contFont").first();
                     try {
@@ -75,4 +75,9 @@ public class HttpParsePFW {
     public static void incrementPage() {
         ++currentPage;
     }
+
+    public static void resetPage() {
+        currentPage = 1;
+    }
+
 }

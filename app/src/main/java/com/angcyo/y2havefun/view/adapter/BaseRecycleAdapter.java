@@ -68,30 +68,33 @@ public class BaseRecycleAdapter extends RecyclerView.Adapter<BaseRecycleAdapter.
 
     @Override
     public void onBindViewHolder(BaseRecycleViewHolder holder, final int position) {
-        if (isLastItem(position)) {
-            holder.contentLayout.setVisibility(View.GONE);
-            holder.loadLayout.setVisibility(View.VISIBLE);
-            holder.loadTip.setText("" + (Util.isEmpty(loadTip) ? context.getString(R.string.want_load_more) : loadTip));
-        } else {
-            holder.contentLayout.setVisibility(View.VISIBLE);
-            holder.loadLayout.setVisibility(View.GONE);
-            ContentItem item = datas.get(position);
-            holder.content.setText(item.getMsgContent() + "");
-            if (!Util.isEmpty(item.getImgUrl())) {
-                holder.image.setVisibility(View.VISIBLE);
-                Glide.with(context).load(item.getImgUrl()).placeholder(R.drawable.placeholder).crossFade().into(holder.image);
-                holder.image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        MainAdapterEvent event = new MainAdapterEvent();
-                        event.clickPosition = position;
-                        EventBus.getDefault().post(event);
-                    }
-                });
+        try {
+            if (isLastItem(position)) {
+                holder.contentLayout.setVisibility(View.GONE);
+                holder.loadLayout.setVisibility(View.VISIBLE);
+                holder.loadTip.setText("" + (Util.isEmpty(loadTip) ? context.getString(R.string.want_load_more) : loadTip));
             } else {
-                holder.image.setVisibility(View.GONE);
+                holder.contentLayout.setVisibility(View.VISIBLE);
+                holder.loadLayout.setVisibility(View.GONE);
+                ContentItem item = datas.get(position);
+                holder.content.setText(item.getMsgContent() + "");
+                if (!Util.isEmpty(item.getImgUrl())) {
+                    holder.image.setVisibility(View.VISIBLE);
+                    Glide.with(context).load(item.getImgUrl()).placeholder(R.drawable.placeholder).crossFade().into(holder.image);
+                    holder.image.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            MainAdapterEvent event = new MainAdapterEvent();
+                            event.clickPosition = position;
+                            EventBus.getDefault().post(event);
+                        }
+                    });
+                } else {
+                    holder.image.setVisibility(View.GONE);
+                }
             }
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

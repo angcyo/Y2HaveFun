@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import com.angcyo.y2havefun.components.RDataService;
 import com.angcyo.y2havefun.util.PrettyToast;
 import com.angcyo.y2havefun.view.adapter.MainViewPagerAdapter;
+import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -98,6 +99,7 @@ public class MainActivity extends BaseActivity {
         super.onDestroy();
         ButterKnife.unbind(this);
         EventBus.getDefault().unregister(this);
+        Glide.get(this).clearMemory();
     }
 
     private MainViewPagerAdapter getViewPagerAdapter() {

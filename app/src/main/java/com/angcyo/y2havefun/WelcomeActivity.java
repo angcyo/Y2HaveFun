@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.angcyo.y2havefun.components.RDataPullMgr;
 import com.angcyo.y2havefun.mode.event.LoadedEvent;
+import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -51,6 +52,12 @@ public class WelcomeActivity extends BaseActivity {
         EventBus.getDefault().register(this);
         initWindow(android.support.design.R.color.accent_material_light);
 
+//        Glide.with(this).load(R.drawable.logo_3jy_l).into(logoL1);
+//        Glide.with(this).load(R.drawable.logo_6js_l).into(logoL2);
+//        Glide.with(this).load(R.drawable.logo_weg_l).into(logoL3);
+//        Glide.with(this).load(R.drawable.logo_jyq_r).into(logoR1);
+//        Glide.with(this).load(R.drawable.logo_lfd_r).into(logoR2);
+//        Glide.with(this).load(R.drawable.logo_pfw_r).into(logoR3);
         createAnim();
     }
 
@@ -87,17 +94,30 @@ public class WelcomeActivity extends BaseActivity {
 
     private void startAnim() {
         showView(logoL1);
-        logoL1.startAnimation(anims[0]);
+//        logoL1.startAnimation(anims[0]);
+        Glide.with(this).load(R.drawable.logo_3jy_l).animate(anims[0]).into(logoL1);
+
         showView(logoL2);
-        logoL2.startAnimation(anims[1]);
+//        logoL2.startAnimation(anims[1]);
+        Glide.with(this).load(R.drawable.logo_6js_l).animate(anims[1]).into(logoL2);
+
         showView(logoL3);
-        logoL3.startAnimation(anims[2]);
+//        logoL3.startAnimation(anims[2]);
+        Glide.with(this).load(R.drawable.logo_weg_l).animate(anims[2]).into(logoL3);
+
+
         showView(logoR1);
-        logoR1.startAnimation(anims[3]);
+//        logoR1.startAnimation(anims[3]);
+        Glide.with(this).load(R.drawable.logo_jyq_r).animate(anims[3]).into(logoR1);
+
+
         showView(logoR2);
-        logoR2.startAnimation(anims[4]);
+//        logoR2.startAnimation(anims[4]);
+        Glide.with(this).load(R.drawable.logo_lfd_r).animate(anims[4]).into(logoR2);
+
         showView(logoR3);
-        logoR3.startAnimation(anims[5]);
+//        logoR3.startAnimation(anims[5]);
+        Glide.with(this).load(R.drawable.logo_pfw_r).animate(anims[5]).into(logoR3);
     }
 
     private void showView(View view) {
@@ -114,7 +134,8 @@ public class WelcomeActivity extends BaseActivity {
     @OnClick(R.id.launch)
     public void launchClick() {
         launchActivity(MainActivity.class);
-        finish();
+        Glide.get(this).clearMemory();
+        this.finish();
     }
 
     @Override
@@ -140,6 +161,7 @@ public class WelcomeActivity extends BaseActivity {
         super.onDestroy();
         ButterKnife.unbind(this);
         EventBus.getDefault().unregister(this);
+        Glide.get(this).clearMemory();
     }
 
 }

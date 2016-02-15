@@ -78,6 +78,8 @@ public class BaseRecycleAdapter extends RecyclerView.Adapter<BaseRecycleAdapter.
                 holder.loadLayout.setVisibility(View.GONE);
                 ContentItem item = datas.get(position);
                 holder.content.setText(item.getMsgContent() + "");
+                holder.content.setSelected(false);
+                holder.content.setTextIsSelectable(true);
                 if (!Util.isEmpty(item.getImgUrl())) {
                     holder.image.setVisibility(View.VISIBLE);
                     Glide.with(context).load(item.getImgUrl()).placeholder(R.drawable.placeholder).crossFade().into(holder.image);

@@ -94,30 +94,30 @@ public class WelcomeActivity extends BaseActivity {
 
     private void startAnim() {
         showView(logoL1);
-//        logoL1.startAnimation(anims[0]);
-        Glide.with(this).load(R.drawable.logo_3jy_l).animate(anims[0]).into(logoL1);
+        logoL1.startAnimation(anims[0]);
+//        Glide.with(this).load(R.drawable.logo_3jy_l).animate(anims[0]).into(logoL1);
 
         showView(logoL2);
-//        logoL2.startAnimation(anims[1]);
-        Glide.with(this).load(R.drawable.logo_6js_l).animate(anims[1]).into(logoL2);
+        logoL2.startAnimation(anims[1]);
+//        Glide.with(this).load(R.drawable.logo_6js_l).animate(anims[1]).into(logoL2);
 
         showView(logoL3);
-//        logoL3.startAnimation(anims[2]);
-        Glide.with(this).load(R.drawable.logo_weg_l).animate(anims[2]).into(logoL3);
+        logoL3.startAnimation(anims[2]);
+//        Glide.with(this).load(R.drawable.logo_weg_l).animate(anims[2]).into(logoL3);
 
 
         showView(logoR1);
-//        logoR1.startAnimation(anims[3]);
-        Glide.with(this).load(R.drawable.logo_jyq_r).animate(anims[3]).into(logoR1);
+        logoR1.startAnimation(anims[3]);
+//        Glide.with(this).load(R.drawable.logo_jyq_r).animate(anims[3]).into(logoR1);
 
 
         showView(logoR2);
-//        logoR2.startAnimation(anims[4]);
-        Glide.with(this).load(R.drawable.logo_lfd_r).animate(anims[4]).into(logoR2);
+        logoR2.startAnimation(anims[4]);
+//        Glide.with(this).load(R.drawable.logo_lfd_r).animate(anims[4]).into(logoR2);
 
         showView(logoR3);
-//        logoR3.startAnimation(anims[5]);
-        Glide.with(this).load(R.drawable.logo_pfw_r).animate(anims[5]).into(logoR3);
+        logoR3.startAnimation(anims[5]);
+//        Glide.with(this).load(R.drawable.logo_pfw_r).animate(anims[5]).into(logoR3);
     }
 
     private void showView(View view) {

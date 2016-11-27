@@ -1,13 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion "23.0.3"
+
+    signingConfigs {
+        angcyo {
+            keyAlias 'angcyo'
+            keyPassword 'angcyo'
+            storeFile file('../angcyo.jks')
+            storePassword 'angcyo'
+        }
+    }
 
     defaultConfig {
         applicationId "com.angcyo.y2havefun"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 21
         versionCode 3
         versionName "1.3.2"
     }
@@ -15,6 +24,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.angcyo
+        }
+        debug {
+            signingConfig signingConfigs.angcyo
         }
     }
     packagingOptions {
@@ -25,16 +38,16 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.0.3'
+    compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.squareup.okio:okio:1.6.0'
-    compile 'com.google.code.gson:gson:2.3.1'
-    compile 'com.android.support:design:23.0.0'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.android.support:design:25.0.0'
     compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile 'com.android.support:recyclerview-v7:23.0.3'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:cardview-v7:23.0.3'
+    compile 'com.android.support:cardview-v7:25.0.0'
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.4'
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
